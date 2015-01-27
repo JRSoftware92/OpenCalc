@@ -1,0 +1,302 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_keypad_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.dev.memorycalc.CalculatorActivity$KeypadFragment" >
+    
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:gravity="center_horizontal">
+
+         <Button
+             android:id="@+id/keypadMemoryButton"
+             style="?android:attr/buttonStyleSmall"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:maxWidth="48dp"
+             android:minWidth="64dp"
+             android:text="@string/text_stored_result" />
+
+         <Button
+             android:id="@+id/keypadMemoryPlusButton"
+             style="?android:attr/buttonStyleSmall"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:maxWidth="48dp"
+             android:minWidth="64dp"
+             android:text="@string/text_stored_result_plus" />
+         
+         <Button
+             android:id="@+id/keypadCbrtButton"
+             style="?android:attr/buttonStyleSmall"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/text_cbrt" />
+
+        
+        
+         <Button
+            android:id="@+id/keypadLnButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_ln" />
+         
+         <Button
+            android:id="@+id/keypadLogButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_log" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/calculatorButtonOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num1" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num2" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num3" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorPlusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_plus" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorMinusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_minus"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/keypadModuloButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_modulus" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/calculatorButtonFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num4" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonFive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num5" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonSix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num6" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorMultButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_multiply" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorDivideButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_divide" 
+            tools:ignore="ButtonStyle"/>
+        
+        <Button
+            android:id="@+id/keypadFactButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_factorial" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/calculatorButtonSeven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num7" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonEight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num8" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonNine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num9" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorEButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_e" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorPowButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_power" 
+            tools:ignore="ButtonStyle"/>
+        
+        <Button
+            android:id="@+id/keypadSqrtButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_sqrt" 
+            tools:ignore="ButtonStyle"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:id="@+id/calculatorButtonLeftParen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_left_paren" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonZero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/text_num0" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorButtonRightParen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_right_paren" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorPiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/pi_string" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorDecimalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_period" 
+            tools:ignore="ButtonStyle"/>
+
+        <Button
+            android:id="@+id/calculatorCommaButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="48dp"
+            android:minWidth="48dp"
+            android:text="@string/symbol_comma" />
+
+    </LinearLayout>
+    
+    
+</LinearLayout>

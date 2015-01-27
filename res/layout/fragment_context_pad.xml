@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_contextpad_background"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal"
+    tools:context="com.dev.opencalc.fragment.ContextPadFragment" >
+
+    <Button
+        android:id="@+id/keypadDefaultButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_contextpad_default" />
+
+    <Button
+        android:id="@+id/keypadAlgebraButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_algebra" 
+        tools:ignore="ButtonStyle"/>
+
+    <Button
+        android:id="@+id/keypadGeometryButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_geometry" 
+        tools:ignore="ButtonStyle"/>
+
+    <Button
+        android:id="@+id/keypadTrigButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_trig" 
+        tools:ignore="ButtonStyle"/>
+
+    <Button
+        android:id="@+id/keypadCustomButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_new"
+        android:textColor="@color/color_button_text_important" 
+        tools:ignore="ButtonStyle"/>
+
+</LinearLayout>

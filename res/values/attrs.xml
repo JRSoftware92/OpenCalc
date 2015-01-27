@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <declare-styleable name="CalculatorButton">
+        <attr name="shiftText" format="string" localization="suggested" />
+        <attr name="buttonText" format="string" localization="suggested"/>
+        <attr name="buttonColor" format="color"/>
+        <attr name="buttonTextColor" format="color"/>
+        <attr name="shiftTextColor" format="color"/>
+        <attr name="shiftViewColor" format="color"/>
+    </declare-styleable>
+</resources>

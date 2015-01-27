@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dev.memorycalc.CalculatorActivity" >
+
+    <item android:id="@+id/action_show_calculation_history" android:title="@string/action_show_calculation_history" android:titleCondensed="Show History" android:orderInCategory="100"></item><item android:id="@+id/action_graph_menu" android:title="@string/action_graph_menu" android:titleCondensed="Graph" android:orderInCategory="200"></item>
+    <item android:id="@+id/action_credits" android:titleCondensed="Credits" android:title="@string/text_credits" android:orderInCategory="500"></item>
+    <item android:id="@+id/action_feedback" android:title="@string/action_feedback" android:titleCondensed="Feedback" android:orderInCategory="300"></item>
+    <item android:id="@+id/action_rating" android:title="@string/action_rating" android:titleCondensed="Rate it\u2026" android:orderInCategory="400"></item>
+    
+    
+
+</menu>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_keypad_background">#708090</color>
+    <color name="color_contextpad_background">#2F4F4F</color>
+    <color name="color_button_text_important">#008B8B</color>
+    <color name="color_app_background">#2F4F4F</color>
+    <color name="color_equal_button">#ADD8E6</color>
+    <color name="color_clear_button">#FF4500</color>
+    <color name="color_backspace_button">#FFA500</color>
+    <color name="color_display_background">#D6E399</color>
+    <color name="color_list_item_background">#ADD8E6</color>
+    
+</resources>

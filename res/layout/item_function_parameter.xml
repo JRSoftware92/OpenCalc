@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_list_item_background"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/parameterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_parameter_default"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/parameterValueText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/White"
+        android:ems="10"
+        android:hint="@string/hint_parameter_value"
+        android:inputType="numberDecimal"
+        android:text="@string/default_parameter_value" >
+
+        <requestFocus />
+    </EditText>
+
+    <RadioButton
+        android:id="@+id/parameterAxisCheckButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_primary_axis" />
+
+</LinearLayout>

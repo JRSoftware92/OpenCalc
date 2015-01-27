@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_app_background"
+    android:orientation="vertical"
+    tools:context="com.dev.memorycalc.FunctionListActivity" >
+        
+	<FrameLayout 
+   		 android:id="@+id/graphFragmentContainer"
+   		 android:layout_width="match_parent"
+  		 android:layout_height="wrap_content"
+  		 android:layout_weight="32"
+   		 tools:ignore="MergeRootFrame" >
+    
+    </FrameLayout>
+
+	<Button
+	    android:id="@+id/addFunctionButton"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:text="@string/button_add_function" />
+
+</LinearLayout>
+
+
+

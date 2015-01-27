@@ -1,0 +1,18 @@
+* The developer of this application is John Riley.
+
+* All source code can be found at https://github.com/JRSoftware92/OpenCalc
+
+* Icon Resource by Wallec at: http://www.iconarchive.com/artist/wwalczyszyn.html
+
+* Calculator Result font: http://www.fontsaddict.com/font/pocket-calculator.html
+
+* Credit goes to https://code.google.com/p/achartengine/ for their charting library, 
+used for graphing functions via line chart. (Coming soon)
+
+* Various resources used for developing calculation algorithm:
+
+	- http://rosettacode.org/wiki/Parsing/Shunting-yard_algorithm#Java
+	
+	- https://github.com/Hunternif/Calculator
+	
+	- http://cogitolearning.co.uk/?p=525

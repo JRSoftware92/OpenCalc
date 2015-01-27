@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:background="@color/color_app_background"
+    android:orientation="vertical"
+    tools:context="com.dev.opencalc.activity.GraphActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <FrameLayout
+        android:id="@+id/graphFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/graphFunctionExprText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.82"
+            android:background="@color/White"
+            android:ems="10"
+            android:hint="@string/hint_graph_expression" />
+
+        <Button
+            android:id="@+id/graphFunctionImportButton"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxHeight="48sp"
+            android:maxWidth="48sp"
+            android:text="@string/text_ellipsis" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/functionListContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </FrameLayout>
+    
+</LinearLayout>
+
