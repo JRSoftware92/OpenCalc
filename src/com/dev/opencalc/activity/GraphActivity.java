@@ -32,6 +32,7 @@ import android.widget.EditText;
  * @author John Riley
  * 
  */
+@SuppressWarnings("deprecation")
 public class GraphActivity extends SupportFragmentActivity implements OnValueChangedListener, 
 																	  OnListItemClickListener{
 	private VariableTokenizer mVarTokenizer = null;

@@ -1,5 +1,7 @@
 package com.dev.opencalc.fragment;
 
+import java.util.Locale;
+
 import com.dev.opencalc.R;
 import com.dev.opencalc.interfaces.CalculatorListener;
 
@@ -246,7 +248,7 @@ public class KeypadFragment extends Fragment {
 	private final Button.OnClickListener FUNCTION_LISTENER = new Button.OnClickListener(){
 		@Override
 		public void onClick(View v) {
-			String temp = ((Button)v).getText().toString() + "(";
+			String temp = ((Button)v).getText().toString().toUpperCase(Locale.US) + "(";
 			mListener.onKeyPadEntry(temp);
 		}
 	};

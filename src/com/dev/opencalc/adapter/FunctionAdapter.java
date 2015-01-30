@@ -3,7 +3,6 @@ package com.dev.opencalc.adapter;
 import com.dev.opencalc.R;
 import com.dev.opencalc.model.FunctionMeta;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,14 +40,14 @@ public class FunctionAdapter extends ArrayAdapter<FunctionMeta> {
 		this.context = context;
 	}
 
-	@SuppressLint("InflateParams") @Override
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View rowView = convertView;
 		FunctionMeta rowItem = getItem(position);
 
 		if (rowView == null) {
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			rowView = inflater.inflate(R.layout.function_list_item, null);
+			rowView = inflater.inflate(R.layout.function_list_item, parent, false);
 
 			ViewHolder viewHolder = new ViewHolder();
 			viewHolder.mName = (TextView) rowView.findViewById(R.id.functionNameView);
