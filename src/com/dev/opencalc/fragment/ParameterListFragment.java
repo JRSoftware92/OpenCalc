@@ -78,6 +78,8 @@ public class ParameterListFragment extends SupportListFragment<ParameterToken> {
 
 	@Override
 	protected void initializeFragment(View rootView, Bundle args) {
+		initializeDefaultFragment(rootView);
+		
 		ParameterListAdapter adapter = null;
 		xAxis = args.getInt(AXIS_KEY);
 		if(args.containsKey(PARAM_KEY) && args.containsKey(VALUE_KEY)){

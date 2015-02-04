@@ -1,9 +1,6 @@
 package com.dev.opencalc.activity;
 
 import com.dev.opencalc.R;
-import com.dev.opencalc.exception.CalculationException;
-import com.dev.opencalc.expressionparsing.ExpressionTokenizer;
-import com.dev.opencalc.expressionparsing.Interpreter;
 import com.dev.opencalc.fragment.ContextPadFragment;
 import com.dev.opencalc.fragment.DisplayFragment;
 import com.dev.opencalc.fragment.KeypadFragment;
@@ -11,11 +8,12 @@ import com.dev.opencalc.interfaces.CalculatorListener;
 import com.dev.opencalc.model.Calculation;
 import com.dev.opencalc.model.CalculatorDatabase;
 import com.dev.opencalc.model.FunctionMeta;
+import com.dev.opencalc.thread.CalculationHandler;
+import com.dev.opencalc.thread.CalculationRunnable;
 import com.dev.opencalc.utils.AppUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -38,17 +36,16 @@ public class CalculatorActivity extends SupportFragmentActivity implements Calcu
 	private KeypadFragment mKeypad;
 	private DisplayFragment mCalcDisplay;
 	
-	private ExpressionTokenizer mTokenizer;
-	private Interpreter mInterpreter;
+	private CalculationHandler mHandler;
 	private CalculatorDatabase mDb;
 	
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
        if (id == R.id.action_graph_menu) {
-			Toast.makeText(this, "Currently undergoing development. Coming soon\u2026", 
-					Toast.LENGTH_SHORT).show();
-			//startActivity(new Intent(this, GraphActivity.class));
+			//Toast.makeText(this, "Currently undergoing development. Coming soon\u2026", 
+			//		Toast.LENGTH_SHORT).show();
+			startActivity(new Intent(this, GraphActivity.class));
 		} else if (id == R.id.action_show_calculation_history) {
 			startActivity(new Intent(this, HistoryActivity.class));
 		} else if (id == R.id.action_credits){
@@ -78,13 +75,13 @@ public class CalculatorActivity extends SupportFragmentActivity implements Calcu
 
 	@Override
 	protected void initializeDefaultActivity() {
-		mTokenizer = new ExpressionTokenizer();
-		mInterpreter = new Interpreter();
         mDb = new CalculatorDatabase(this);
         
         mCalcDisplay = DisplayFragment.newInstance(mCurrentEntry);
         mKeypad = KeypadFragment.newInstance();
         mContextPad = ContextPadFragment.newInstance();
+        mHandler = new CalculationHandler(mCalcDisplay);
+        
         beginTransaction().add(R.id.calculatorDisplayContainer, mCalcDisplay)
             .add(R.id.calculatorKeypadContainer, mKeypad)
             .add(R.id.calculatorContextContainer, mContextPad)
@@ -95,30 +92,13 @@ public class CalculatorActivity extends SupportFragmentActivity implements Calcu
 	 * Called on equals click: Attempts to calculate the entry if possible.
 	 */
     private void handleCalculation(){
-    	try{
-    		Log.d("Calculator", "Attempting to tokenizer: " + mCurrentEntry);
-    		if(mLastCalculation != null){
-    			mTokenizer.tokenize(mCurrentEntry, mLastCalculation.getDoubleResult());
-    		}
-    		else{
-    			mTokenizer.tokenize(mCurrentEntry);
-    		}
-    		mInterpreter.interpret(mTokenizer.getOutput());
-    		mLastCalculation = new Calculation(mCurrentEntry, mInterpreter.getStringResult());
-    		
-    		mCalcDisplay.setDisplayText(mCurrentEntry, mLastCalculation.getStringResult());
-    		mDb.insertCalculation(mLastCalculation);
-    		bCalculated = true;
-    	}
-    	catch(CalculationException ce){
-    		mCalcDisplay.setDisplayText(mCurrentEntry, ce.getMessage());
-    		Toast.makeText(this, ce.getMessage(), Toast.LENGTH_SHORT).show();
-    	}
-    	catch(Exception e){
-    		mCalcDisplay.setDisplayText(mCurrentEntry, "Unknown Error");
-    		Toast.makeText(this, "Unexpected calculation error.", Toast.LENGTH_SHORT).show();
-    		Log.e("CalculatorActivity", "Unexpected calculation error.");
-    	}
+    	CalculationRunnable runnable = new CalculationRunnable(mHandler, 
+    			mCurrentEntry, mLastCalculation);
+    	Thread thread = new Thread(runnable);
+    	thread.start();
+    	
+    	mDb.insertCalculation(mLastCalculation);
+		bCalculated = true;
     }
 
     //------------------------Calculator Listener Methods--------------------------//

@@ -2,12 +2,15 @@ package com.dev.opencalc.activity;
 
 import java.util.HashMap;
 
+import com.dev.graph.GraphSeries;
+import com.dev.graph.GraphType;
+import com.dev.graph.LineGraphFragment;
+import com.dev.graph.OnGraphClickListener;
 import com.dev.opencalc.R;
 import com.dev.opencalc.adapter.ExpandableFunctionAdapter.OnValueChangedListener;
 import com.dev.opencalc.exception.CalculationException;
 import com.dev.opencalc.expressionparsing.ParameterToken;
 import com.dev.opencalc.expressionparsing.VariableTokenizer;
-import com.dev.opencalc.fragment.LineGraphFragment;
 import com.dev.opencalc.fragment.ParameterListFragment;
 import com.dev.opencalc.fragment.SimpleTextFragment;
 import com.dev.opencalc.fragment.SupportFragment;
@@ -16,6 +19,7 @@ import com.dev.opencalc.model.FunctionMeta;
 import com.dev.opencalc.model.FunctionSeries;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -34,7 +38,8 @@ import android.widget.EditText;
  */
 @SuppressWarnings("deprecation")
 public class GraphActivity extends SupportFragmentActivity implements OnValueChangedListener, 
-																	  OnListItemClickListener{
+																	  OnListItemClickListener,
+																	  OnGraphClickListener{
 	private VariableTokenizer mVarTokenizer = null;
 	
 	private String mCurrentEntry = "";
@@ -135,11 +140,16 @@ public class GraphActivity extends SupportFragmentActivity implements OnValueCha
 	 */
 	private void updateFragment(FunctionMeta func, ParameterToken[] params, int axis){
 		FunctionSeries series = getSeries(func, params, axis);
+		GraphSeries gSeries = new GraphSeries.Builder(series)
+							  .setTitle(func.getName()).setType(GraphType.Line)
+							  .setXLabel("X-AXIS").setYLabel("Y-AXIS")
+							  .setColors(Color.WHITE)
+						 	  .toSeries();
 		
 		Log.d("GraphActivity", "Initializing list fragment");
 		mListFragment = ParameterListFragment.newInstance(params, axis);
 		Log.d("GraphActivity", "Initializing graph fragment");
-		mGraphFragment = LineGraphFragment.newInstance(series);
+		mGraphFragment = LineGraphFragment.newInstance(gSeries);
 		replaceFragment(R.id.functionListContainer, mListFragment);
 		replaceFragment(R.id.graphFragmentContainer, mGraphFragment);
 	}
@@ -163,15 +173,19 @@ public class GraphActivity extends SupportFragmentActivity implements OnValueCha
 				mVarTokenizer.tokenize(text);
 				Log.d("GraphActivity", "Tokenized");
 				mParams = mVarTokenizer.getParameters();
-				char[] c = new char[mParams.length];
-				for(int i = 0; i < mParams.length; i++){
-					c[i] = mParams[i].getStringParameter().charAt(0);
+				char[] c = null;
+				if(mParams != null){
+					c = new char[mParams.length];
+					for(int i = 0; i < mParams.length; i++){
+						c[i] = mParams[i].getStringParameter().charAt(0);
+					}
+					mFunction = new FunctionMeta("Function", "func", text, c);
 				}
-				mFunction = new FunctionMeta("", "", text, c);
 				refresh();
 			} 
 			catch (CalculationException e) {
-				Log.e("GraphActivity", e.getMessage());
+				String msg = e.getMessage();
+				Log.e("GraphActivity", msg != null ? msg : "Unknown Error");
 			}
 		}
 	}
@@ -185,8 +199,10 @@ public class GraphActivity extends SupportFragmentActivity implements OnValueCha
 	 */
 	public static FunctionSeries getSeries(FunctionMeta func, ParameterToken[] params, int primaryAxisIndex){
 		HashMap<String, Double> valueMap = new HashMap<String, Double>();
-		for(int i = 0; i < params.length; i++){
-			valueMap.put(params[i].getStringParameter(), params[i].getValue());
+		if(params != null){
+			for(int i = 0; i < params.length; i++){
+				valueMap.put(params[i].getStringParameter(), params[i].getValue());
+			}
 		}
 		Log.d("GraphActivity", "Before Builder");
 		FunctionSeries series = new FunctionSeries.Builder(func, valueMap)
@@ -228,4 +244,9 @@ public class GraphActivity extends SupportFragmentActivity implements OnValueCha
 			onImportFunctionClick(v);
 		}
 	};
+
+	@Override
+	public void onGraphClick(GraphSeries series) {
+		// TODO Auto-generated method stub
+	}
 }

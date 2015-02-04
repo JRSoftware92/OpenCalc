@@ -21,6 +21,7 @@ import com.dev.opencalc.expressionparsing.Interpreter;
 public class Calculation extends SQLObject implements Parcelable {
 	
 	private long mId = -1;
+	private boolean bIsError = false;
 	private String mStatement = "";
 	private String mResult = "";
 	
@@ -31,9 +32,11 @@ public class Calculation extends SQLObject implements Parcelable {
 			mResult = Double.toString(Interpreter.calculate(mStatement));
 		} 
 		catch (CalculationException ce){
+			bIsError = true;
 			mResult = ce.getMessage();
 		}
 		catch (Exception e) {
+			bIsError = true;
 			mResult = "Unknown Error";
 		}
 	}
@@ -70,6 +73,8 @@ public class Calculation extends SQLObject implements Parcelable {
 	public int getIntResult() throws NumberFormatException{
 		return Integer.parseInt(mResult);
 	}
+	
+	public boolean isError(){ return bIsError; }
 	
 	//---------------------------Database Interface Methods------------------//
 	

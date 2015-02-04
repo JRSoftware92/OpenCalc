@@ -184,9 +184,9 @@ public class FunctionSeries implements Parcelable {
 					}
 				}
 				for(int i = 0; i < mNumResults; i++){	//set entry value, then tokenize and interpret
+					Log.d("FunctionSeries", "Computing entry " + Double.toString(entry));
 					if(i > 0){
 						entry += mDelta;
-						Log.d("FunctionSeries", "Computing entry " + Double.toString(entry));
 					}
 					values[mAxisPos] = new ParameterToken(Character.toString(params[mAxisPos]),
 							entry);
@@ -202,6 +202,7 @@ public class FunctionSeries implements Parcelable {
 						series.mValueMap.put(entry, Double.toString(result));
 					}
 					catch(Exception e){
+						Log.e("FunctionSeries", "Exception occurred while placing entry: " + i);
 						series.mValueMap.put(entry, "N/A");
 					}
 				}

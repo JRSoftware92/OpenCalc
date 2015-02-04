@@ -1,5 +1,7 @@
 package com.dev.opencalc.fragment;
 
+import com.dev.opencalc.fragment.SupportFragment;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;

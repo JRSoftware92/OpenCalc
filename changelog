@@ -1,7 +1,0 @@
-Updates for OpenCalc since publishing.
-
-+ New Feature
-* Bug Fix
-
-January 30, 2015
-- Fixed bug where function entries from keypad weren't being calculated properly.

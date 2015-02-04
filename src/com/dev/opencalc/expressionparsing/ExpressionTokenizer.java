@@ -34,6 +34,7 @@ public class ExpressionTokenizer extends Tokenizer {
 		super();
 		initializeMetaData();
 		mOpStack = new LinkedList<Token>();
+		mParameters = new HashMap<String, ParameterToken>();
 	}
 	
 	/**
@@ -54,8 +55,8 @@ public class ExpressionTokenizer extends Tokenizer {
 	 */
 	public ExpressionTokenizer(String expr, ParameterToken[] params) throws CalculationException{
 		this();
-		mParameters = new HashMap<String, ParameterToken>();
 		for(ParameterToken token : params){
+			Log.d("ExpressionTokenizer", "Adding parameter token: " + token + " with value: " + token.mValue);
 			mParameters.put(token.mStrToken, token);
 		}
 		tokenize(expr);
@@ -94,7 +95,7 @@ public class ExpressionTokenizer extends Tokenizer {
 		add("[\\*\\+\\-\\/\\^\\%]{1}", TokenType.Operator);
 		add("[\\(]{1}", TokenType.Left_Parenthesis);
 		add("[\\)]{1}", TokenType.Right_Parenthesis);
-		add("[A-Z]+", TokenType.Function);
+		add("[a-df-zA-Z]+", TokenType.Function);
 		add("[,]{1}", TokenType.Comma);
 		//TODO May cause problems.
 		//add("[.]{1}", TokenType.Period);
@@ -126,7 +127,7 @@ public class ExpressionTokenizer extends Tokenizer {
 				result = new ValueToken(token, mLastResult);
 			}
 			else if (mParameters != null && mParameters.containsKey(token)){
-				//TODO Figure out why i put this here.
+				Log.d("Expression Tokenizer", "Found parameter token.");
 				result = mParameters.get(token);
 			}
 			break;
@@ -172,6 +173,7 @@ public class ExpressionTokenizer extends Tokenizer {
 			Log.d("Tokenizer", token.toString());
 			//Number or decimal
 			if(token instanceof ValueToken){
+				Log.d("Expression Tokenizer", "Found value token: " + token.mStrToken);
 				output.add(token);
 			}
 			//Operator 
@@ -179,7 +181,8 @@ public class ExpressionTokenizer extends Tokenizer {
 				Token top = mOpStack.peek();
 				OperatorToken currOp = (OperatorToken) token;
 				
-				while(top != null && top instanceof OperatorToken && isSwitchable(currOp, (OperatorToken)top)){
+				while(top != null && top instanceof OperatorToken 
+						&& isSwitchable(currOp, (OperatorToken)top)){
 					output.add(mOpStack.pop());
 					top = mOpStack.peek();
 				}
