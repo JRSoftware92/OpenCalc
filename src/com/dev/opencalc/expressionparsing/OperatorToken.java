@@ -74,7 +74,7 @@ public class OperatorToken extends FunctionToken {
 			switch(mOperator){
 			case PLUS: return params[0] + params[1];
 			case MINUS: return params[0] - params[1];
-			case MULTIPLY: return params[0] - params[1];
+			case MULTIPLY: return params[0] * params[1];
 			case MODULO: return params[0] % params[1];
 			case POW: return MathUtils.pow(params[1], params[2]);
 			case DIVIDE:

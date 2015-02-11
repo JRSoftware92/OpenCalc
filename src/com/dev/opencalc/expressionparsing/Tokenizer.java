@@ -31,7 +31,7 @@ public abstract class Tokenizer {
 		mInfo.add(new TokenMeta(regex, type));
 	}
 	
-	public void tokenize(String entry) throws CalculationException{
+	public void tokenize(String entry) throws CalculationException {
 		String str = new String(entry);
 		String temp = "";
 		Matcher matcher = null;

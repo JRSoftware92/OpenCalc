@@ -43,9 +43,9 @@ public class CalculatorActivity extends SupportFragmentActivity implements Calcu
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
        if (id == R.id.action_graph_menu) {
-			//Toast.makeText(this, "Currently undergoing development. Coming soon\u2026", 
-			//		Toast.LENGTH_SHORT).show();
-			startActivity(new Intent(this, GraphActivity.class));
+			Toast.makeText(this, "Currently undergoing development. Coming soon\u2026", 
+					Toast.LENGTH_SHORT).show();
+			//startActivity(new Intent(this, GraphActivity.class));
 		} else if (id == R.id.action_show_calculation_history) {
 			startActivity(new Intent(this, HistoryActivity.class));
 		} else if (id == R.id.action_credits){
